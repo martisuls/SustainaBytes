@@ -11,7 +11,7 @@ import requests
 from bs4 import BeautifulSoup
 
 #Spoonacular API key, needed to access API
-API_KEY = "7f5e0f00575f483ba2a9ff81371e0a73"
+API_KEY = "5397833665e64aaf9e8e2bcc02471f85"
 
 def search_by_ingredients(ingredients):
     url = f'https://api.spoonacular.com/recipes/findByIngredients'
@@ -80,5 +80,18 @@ if st.button('Search Recipes by Ingredients'):
         st.subheader("Here are some recipe suggestions:")
         for recipe in recipes:
             st.write(f"- {recipe['title']}")
+            # Fetching and displaying recipe details
+            details = fetch_recipe_details(recipe['id'])
+            if details:
+                st.write("Recipe Details:")
+                st.write(f"Instructions: {details['instructions']}")
+                st.write(f"Servings: {details['servings']}")
+                #getting nutrient info
+                nutrients = fetch_nutrition_info(recipe['id'])
+                if nutrients:
+                    st.write("Nutritional Information:")
+                    for nutrient in nutrients['nutrients']:
+                        st.write(f"{nutrient['name']}: {nutrient['amount']} {nutrient['unit']}")
+                            
     else:
         st.write("No recipes found. Try adjusting your search criteria.")
