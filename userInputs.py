@@ -52,7 +52,7 @@ def fetch_nutrition_info(recipe_id):
 st.title("Sustainabytes")
 
 # Input field for ingredients
-ingredients_input = st.text_area('Enter ingredients:')
+ingredients_input = st.text_area('Write ingredients:')
 
 # Multiselect for cuisine
 cuisine_options = ['African', 'American', 'Cajun', 'Caribbean', 'Chinese', 'Eastern European', 'European', 'French', 'German', 'Greek', 'Indian', 'Italian', 'Japanese', 'Korean', 'Latin American', 'Mediterranean', 'Mexican', 'Middle Eastern', 'Nordic', 'Spanish', 'Thai', 'Vietnamese']
